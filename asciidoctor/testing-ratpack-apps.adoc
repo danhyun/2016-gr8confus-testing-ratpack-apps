@@ -98,7 +98,7 @@ def 'should render \'Very important handler\''() {
 ----
 <1> Consult the `HandlingResult` for response body
 
-WARN: This test will fail
+WARNING: This test will fail
 
 What happened?
 
