@@ -4,4 +4,5 @@ Dan Hyun <@LSpacewalker>
 == Testing Ratpack Applications @ GR8ConfUS 2016
 
 Notes: https://danhyun.github.io/2016-gr8confus-testing-ratpack-apps
+
 PDF: https://danhyun.github.io/2016-gr8confus-testing-ratpack-apps/testing-ratpack-apps.pdf
