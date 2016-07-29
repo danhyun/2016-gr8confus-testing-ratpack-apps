@@ -1,21 +1,24 @@
 import groovy.transform.Canonical
+import ratpack.exec.Blocking
 import ratpack.exec.Operation
 import ratpack.exec.Promise
 
 class ProfileService {
-  final List<Profile> profiles = []
+  final List<Profile> store = []
   Promise<List<Profile>> getProfiles() {
-    Promise.value(profiles)
+    Promise.value(store)
   }
 
   Operation add(Profile p) {
-    profiles.add(p)
-    Operation.noop()
+    Blocking.op {
+      store.add(p)
+    }
   }
 
   Operation delete() {
-    profiles.clear()
-    Operation.noop()
+    Blocking.op {
+      store.clear()
+    }
   }
 }
 

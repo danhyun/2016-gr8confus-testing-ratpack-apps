@@ -7,9 +7,9 @@ class EmbeddedAppSpec extends Specification {
   def 'can create simple hello world'() {
     expect:
     GroovyEmbeddedApp.fromHandler { // <1>
-      render 'Hello Greach 2016!'
+      render 'Hello GR8ConfUS 2016!'
     } test {
-      assert getText() == 'Hello Greach 2016!' // <2>
+      assert getText() == 'Hello GR8ConfUS 2016!' // <2>
     }
   }
   // end::hello-world[]

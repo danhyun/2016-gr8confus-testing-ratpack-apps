@@ -20,7 +20,7 @@ class ImpositionSpec extends Specification {
         UserRegistryImposition.of(Guice.registry {
           it.add(new ConfService(null, null) {
             Promise<List<String>> getConferences() {
-              Promise.value(['Greach'])
+              Promise.value(['GR8ConfUS'])
             }
           })
         }))
@@ -38,6 +38,6 @@ class ImpositionSpec extends Specification {
     response.statusCode == 200
 
     and:
-    response.body.text.contains('Greach')
+    response.body.text.contains('GR8ConfUS')
   }
 }

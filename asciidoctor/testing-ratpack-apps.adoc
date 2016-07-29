@@ -20,7 +20,7 @@ We'll explore how Ratpack's rich testing facilities strongly support this statem
 [source, gradle]
 .testing-ratpack-apps.gradle
 ----
-include::example-01/example-01.gradle[tags=head;dependencies]
+include::../example-01/example-01.gradle[tags=head;dependencies]
 ----
 <1> Use Gradle's incubating Plugins feature
 <2> Pull in and apply Ratpack's Gradle plugin from Gradle's Plugin Portal
@@ -31,13 +31,13 @@ include::example-01/example-01.gradle[tags=head;dependencies]
 [source, groovy]
 .ratpack.groovy
 ----
-include::example-01/src/ratpack/ratpack.groovy[]
+include::../example-01/src/ratpack/ratpack.groovy[]
 ----
 
 [source, groovy]
 .MainClassApp
 ----
-include::example-01/src/main/groovy/MainClassApp.groovy[]
+include::../example-01/src/main/groovy/MainClassApp.groovy[]
 ----
 
 === Verify
@@ -55,7 +55,7 @@ Hello Greach 2016!
 [source, groovy]
 .HelloWorldSpec.groovy
 ----
-include::example-01/src/test/groovy/HelloWorldSpec.groovy[]
+include::../example-01/src/test/groovy/HelloWorldSpec.groovy[]
 ----
 
 === Junit Test
@@ -63,7 +63,7 @@ include::example-01/src/test/groovy/HelloWorldSpec.groovy[]
 [source, groovy]
 .HelloJunitTest.groovy
 ----
-include::example-01/src/test/groovy/HelloJunitTest.groovy[]
+include::../example-01/src/test/groovy/HelloJunitTest.groovy[]
 ----
 
 == Unit testing
@@ -75,13 +75,13 @@ include::example-01/src/test/groovy/HelloJunitTest.groovy[]
 [source, groovy]
 .ImportantHandler.groovy
 ----
-include::example-02/src/main/groovy/ImportantHandler.groovy[]
+include::../example-02/src/main/groovy/ImportantHandler.groovy[]
 ----
 
 [source, groovy]
 .ratpack.groovy
 ----
-include::example-02/src/ratpack/ratpack.groovy[]
+include::../example-02/src/ratpack/ratpack.groovy[]
 ----
 <1> Bind our `ImportantHandler` to `GET /`
 
@@ -111,7 +111,7 @@ Modify the handler:
 [source, groovy]
 .ImportantSendingHandler.groovy
 ----
-include::example-02/src/main/groovy/ImportantSendingHandler.groovy[]
+include::../example-02/src/main/groovy/ImportantSendingHandler.groovy[]
 ----
 
 Modify the expectation:
@@ -119,7 +119,7 @@ Modify the expectation:
 [source, groovy]
 .ImportantHandlerUnitSpec.groovy
 ----
-include::example-02/src/test/groovy/ImportantHandlerUnitSpec.groovy[tag=rendering-spec]
+include::../example-02/src/test/groovy/ImportantHandlerUnitSpec.groovy[tag=rendering-spec]
 ----
 <1> Retrieve the rendered object by type from `HandlingResult`
 
@@ -130,7 +130,7 @@ Everday use:
 [source,groovy]
 .HeaderExtractionHandler.groovy
 ----
-include::example-02/src/main/groovy/HeaderExtractionHandler.groovy[]
+include::../example-02/src/main/groovy/HeaderExtractionHandler.groovy[]
 ----
 <1> Extract HTTP header and render a response to client
 
@@ -138,7 +138,7 @@ include::example-02/src/main/groovy/HeaderExtractionHandler.groovy[]
 [source,groovy]
 .HeaderExtractionHandlingSpec.groovy
 ----
-include::example-02/src/test/groovy/HeaderExtractionHandlingSpec.groovy[]
+include::../example-02/src/test/groovy/HeaderExtractionHandlingSpec.groovy[]
 ----
 <1> You can get a chance to configure the properties of the request to be made, can configure HTTP method, headers, request body, etc.
 
@@ -147,7 +147,7 @@ include::example-02/src/test/groovy/HeaderExtractionHandlingSpec.groovy[]
 [source, groovy]
 .ProfileLoadingHandler.groovy
 ----
-include::example-02/src/main/groovy/ProfileLoadingHandler.groovy[]
+include::../example-02/src/main/groovy/ProfileLoadingHandler.groovy[]
 ----
 <1> Extract role from request header, defaulting to 'guest'
 <2> Extract a String from the context registry
@@ -158,7 +158,7 @@ We can make use of `RequestFixture` to populate the Registry with any entries ou
 [source, groovy]
 .ProfileLoadingHandlingSpec.groovy
 ----
-include::example-02/src/test/groovy/ProfileLoadingHandlingSpec.groovy[tag=registry]
+include::../example-02/src/test/groovy/ProfileLoadingHandlingSpec.groovy[tag=registry]
 ----
 <1> Use `RequestFixture#header` to add Headers to the HTTP Request
 <2> Use `RequestFixture#registry` to add a `String` to the Context registry
@@ -169,12 +169,12 @@ Let's put our `ProfileLoadingHandler` in a chain with a dummy Map renderer:
 [source, groovy]
 .ProfileLoadingHandlingSpec.groovy
 ----
-include::example-02/src/test/groovy/ProfileLoadingHandlingSpec.groovy[tag=chain]
+include::../example-02/src/test/groovy/ProfileLoadingHandlingSpec.groovy[tag=chain]
 ----
 
 == `GroovyEmbeddedApp`
 
-`GroovyEmbeddedApp` represents an isolated subset of functionality that stands up a full Ratpack server. 
+`GroovyEmbeddedApp` represents an isolated subset of functionality that stands up a full Ratpack server.
 
 It represents a very bare server that binds to an ephemeral port and has no base directory by default.
 `GroovyEmbeddedApp` is also `AutoCloseable`.
@@ -186,7 +186,7 @@ The `EmbeddedApp` is also useful in creating a test fixture that represents some
 [source, groovy]
 .EmbeddedAppSpec
 ----
-include::example-03/src/test/groovy/EmbeddedAppSpec.groovy[tag=hello-world]
+include::../example-03/src/test/groovy/EmbeddedAppSpec.groovy[tag=hello-world]
 ----
 <1> Creates a full Ratpack server with a single handler
 <2> Ratpack provides us with a `TestHttpClient` that is configured to submit requests to `EmbeddedApp`. When the closure is finished executing Ratpack will take care of cleaning up the `EmbeddedApp`.
@@ -198,7 +198,7 @@ For testing, Ratpack provides `TestHttpClient` which is a blocking, synchronous 
 [source, groovy]
 .EmbeddedAppSpec
 ----
-include::example-03/src/test/groovy/EmbeddedAppSpec.groovy[tag=client]
+include::../example-03/src/test/groovy/EmbeddedAppSpec.groovy[tag=client]
 ----
 <1> Create `GroovyEmbeddedApp` from a chain
 <2> Retrieve a configured `TestHttpClient` for making requests against the `EmbeddedApp`
@@ -210,7 +210,7 @@ The `TestHttpClient` has some basic support for manipulating request configurati
 [source, groovy]
 .EmbeddedAppSpec
 ----
-include::example-03/src/test/groovy/EmbeddedAppSpec.groovy[tag=request-config]
+include::../example-03/src/test/groovy/EmbeddedAppSpec.groovy[tag=request-config]
 ----
 <1> Create sample app that reads and writes cookies
 <2> Issue requests that ensures cookie setting/expiring and redirect functionality
@@ -220,12 +220,12 @@ include::example-03/src/test/groovy/EmbeddedAppSpec.groovy[tag=request-config]
 
 Ratpack is asynchronous and non-blocking from the ground up. This means that not only is Ratpack's api asynchronous but it expects that your code should be asynchronous as well.
 
-Let's say we have a `ProfileService` that's responsible for retrieving `Profile`s:
+Let's say we have a `ProfileService` that's responsible for retrieving `Profile` s:
 
 [source, groovy]
 .ProfileService.groovy
 ----
-include::example-04/src/main/groovy/ProfileService.groovy[]
+include::../example-04/src/main/groovy/ProfileService.groovy[]
 ----
 
 If you were to test this Service without any assistance from Ratpack you will run into the well known `UnmanagedThreadException`:
@@ -243,7 +243,7 @@ It utilizes resources that manage an `EventLoopGroup` and an `ExecutorService` s
 [source, groovy]
 .ProfileServiceExec.groovy
 ----
-include::example-04/src/test/groovy/ProfileServiceSpec.groovy[]
+include::../example-04/src/test/groovy/ProfileServiceSpec.groovy[]
 ----
 <1> Create an `ExecHarness` and tell Spock to clean up when we are finished
 <2> Use `ExecHarness#yield` to wrap all of our service calls so that our Promises and Operations can be resolved on a Ratpack managed thread.
@@ -257,7 +257,7 @@ For testing `ratpack.groovy` backed applications
 
 [source, groovy]
 ----
-include::example-01/src/test/groovy/HelloWorldSpec.groovy[tag=GroovyScriptAUT]
+include::../example-01/src/test/groovy/HelloWorldSpec.groovy[tag=GroovyScriptAUT]
 ----
 
 `MainClassApplicationUnderTest`::
@@ -265,7 +265,7 @@ For testing class backed applications
 
 [source, groovy]
 ----
-include::example-01/src/test/groovy/HelloWorldSpec.groovy[tag=MainClassAUT]
+include::../example-01/src/test/groovy/HelloWorldSpec.groovy[tag=MainClassAUT]
 ----
 
 Our sample Ratpack application for testing:
@@ -273,7 +273,7 @@ Our sample Ratpack application for testing:
 [source, groovy]
 .ratpack.groovy
 ----
-include::example-05/src/ratpack/ratpack.groovy[]
+include::../example-05/src/ratpack/ratpack.groovy[]
 ----
 <1> Pull configuration from System properties
 <2> Create an ApiConfig object and put into the registry
@@ -283,7 +283,7 @@ include::example-05/src/ratpack/ratpack.groovy[]
 [source, groovy]
 .ApiConfig.groovy
 ----
-include::example-05/src/main/groovy/ApiConfig.groovy[]
+include::../example-05/src/main/groovy/ApiConfig.groovy[]
 ----
 
 Simple object to contain our configuration data related to an API
@@ -291,7 +291,7 @@ Simple object to contain our configuration data related to an API
 [source, groovy]
 .ConfService
 ----
-include::example-05/src/main/groovy/ConfService.groovy[]
+include::../example-05/src/main/groovy/ConfService.groovy[]
 ----
 <1> Receive `ApiConfig` and `HtpClient` from Guice
 <2> Define an asynchronous service method to retrieve data from remote service
@@ -303,7 +303,7 @@ We can take advantage of system properties to change how the Ratpack application
 [source, groovy]
 .FunctionalSpec.groovy
 ----
-include::example-05/src/test/groovy/FunctionalSpec.groovy[]
+include::../example-05/src/test/groovy/FunctionalSpec.groovy[]
 ----
 <1> Create our `ApplicationUnderTest` and tell Spock to clean up when we're done
 <2> Retrieve `TestHttpClient` and make use of `@Delegate` to make tests very readable
@@ -316,13 +316,13 @@ include::example-05/src/test/groovy/FunctionalSpec.groovy[]
 `Impositions` allow a user to provide overrides to various aspects of the Ratpack application bootstrap phase.
 
 * `ServerConfigImposition` allows to override server configuration
-* `BindingsImposition` allows to provide Guice binding overrides 
+* `BindingsImposition` allows to provide Guice binding overrides
 * `UserRegistryImposition` allows you to provide alternatives for items in the registry
 
 [source, groovy]
 .ImpositionSpec
 ----
-include::example-05/src/test/groovy/ImpositionSpec.groovy[]
+include::../example-05/src/test/groovy/ImpositionSpec.groovy[]
 ----
 <1> Override `addImpositions` method to provide a `UserRegistryImposition` that supplies our own dumb implementation of `ConfService` that does not need to make any network connections
 
@@ -335,14 +335,14 @@ Used to serialize commands to be executed on the `ApplicationUnderTest`
 [source, groovy]
 .build.gradle
 ----
-include::example-06/example-06.gradle[tag=deps]
+include::../example-06/example-06.gradle[tag=deps]
 ----
 Here we add a test compile dependency on `io.ratpack:ratpack-remote-test` which includes a dependency on `remote-control`
 
 [source, groovy]
 .RemoteControlSpec.groovy
 ----
-include::example-06/src/test/groovy/RemoteControlSpec.groovy[]
+include::../example-06/src/test/groovy/RemoteControlSpec.groovy[]
 ----
 <1> We use `BindingsImposition` here to add a hook into the running `ApplicationUnderTest` that allows us to run remote code on the server
 <2> We tell `RemoteControl` not to complain if the result of the command is not Serializable
@@ -356,7 +356,7 @@ It is also an `AutoCloseable` so you'll need to make sure to clean up after use.
 [source, groovy]
 .EphemeralSpec.groovy
 ----
-include::example-07/src/test/groovy/EphemeralSpec.groovy[]
+include::../example-07/src/test/groovy/EphemeralSpec.groovy[]
 ----
 
 == Resources

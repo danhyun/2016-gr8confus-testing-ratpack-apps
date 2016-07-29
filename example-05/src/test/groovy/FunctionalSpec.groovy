@@ -18,7 +18,7 @@ class FunctionalSpec extends Specification {
   @Shared
   @AutoCleanup
   GroovyEmbeddedApp api = GroovyEmbeddedApp.fromHandler { // <3>
-    render 'Greach, GR8conf, Gradle Conf'
+    render 'GR8Conf, Greach, Gradle Summit'
   }
 
   def setup() {
@@ -33,6 +33,6 @@ class FunctionalSpec extends Specification {
     response.statusCode == 200
 
     and:
-    response.body.text.contains('Greach')
+    response.body.text.contains('GR8Conf')
   }
 }

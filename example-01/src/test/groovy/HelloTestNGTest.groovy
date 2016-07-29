@@ -30,7 +30,7 @@ public class HelloTestNGTest {
       mainClassApplicationUnderTest
     ].each { aut ->
       TestHttpClient client = aut.httpClient
-      assertEquals('Hello Greach 2016!', client.getText())
+      assertEquals('Hello GR8ConfUS 2016!', client.getText())
     }
   }
 }

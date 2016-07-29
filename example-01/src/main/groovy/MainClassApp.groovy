@@ -12,7 +12,7 @@ class MainClassApp {
     RatpackServer.start({ RatpackServerSpec serverSpec -> serverSpec
       .handlers({ Chain chain ->
         chain.get({GroovyContext ctx ->
-          ctx.render 'Hello Greach 2016!'
+          ctx.render 'Hello GR8ConfUS 2016!'
         } as GroovyHandler)
       } as Action<Chain>)
     } as Action<RatpackServerSpec>)

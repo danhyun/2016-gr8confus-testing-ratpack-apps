@@ -17,7 +17,7 @@ class HeaderExtractionHandlingSpec extends Specification {
 
     where:
     expectedValue | requestFixture
-    'greach2016'  | { header('special', 'greach2016') } // <1>
+    'gr8confUS2016'  | { header('special', 'gr8confUS2016') } // <1>
     'not special' | {}
   }
 }

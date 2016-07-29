@@ -3,7 +3,7 @@ import static ratpack.groovy.Groovy.ratpack
 ratpack {
   handlers {
     get {
-      render 'Hello Greach 2016!'
+      render 'Hello GR8ConfUS 2016!'
     }
   }
 }

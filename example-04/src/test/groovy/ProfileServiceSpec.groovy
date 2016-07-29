@@ -20,14 +20,15 @@ class ProfileServiceSpec extends Specification {
     result.value == []
 
     when:
-    execHarness.yield { service.add(new Profile(role: 'admin', token: 'secret')) }
+    execHarness.execute { service.add(new Profile(role: 'admin', token: 'secret')) }
     and:
     List<Profile> profiles = execHarness.yield { service.profiles }.value
 
-    then: profiles == [new Profile(role: 'admin', token: 'secret')]
+    then:
+    profiles == [new Profile(role: 'admin', token: 'secret')]
 
     when:
-    execHarness.yield { service.delete() }
+    execHarness.execute { service.delete() }
 
     then:
     execHarness.yield { service.profiles }.value == []

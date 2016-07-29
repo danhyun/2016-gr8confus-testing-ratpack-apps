@@ -20,12 +20,12 @@ class HelloWorldSpec extends Specification {
   // end::MainClassAUT[]
 
   @Unroll
-  def 'Should render \'Hello Greach 2016!\' from #type'() {
+  def 'Should render \'Hello GR8ConfUS 2016!\' from #type'() {
     when:
     def getText = aut.httpClient.getText()
 
     then:
-    getText == 'Hello Greach 2016!'
+    getText == 'Hello GR8ConfUS 2016!'
 
     where:
     aut                              | type
