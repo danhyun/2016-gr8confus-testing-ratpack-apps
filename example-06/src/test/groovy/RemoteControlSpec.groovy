@@ -36,8 +36,8 @@ class RemoteControlSpec extends Specification {
 
     when:
     remoteControl.exec { // <3>
-      get(ProfileService)
-        .add(new Profile('admin'))
+      ratpack.exec.Blocking.on (get(ProfileService)
+        .add(new Profile('admin')).promise())
     }
 
     and:
